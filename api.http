@@ -1,0 +1,26 @@
+POST http://localhost:5000/api/greet
+content-type: application/json
+
+{
+	"language" : "xhosa",
+	"greeting" : "Molo"
+}
+
+###
+
+
+POST http://localhost:5000/api/greet
+content-type: application/json
+
+{
+	"language" : "zulu",
+	"greeting" : "Sawubona"
+}
+
+###
+
+POST http://localhost:5000/api/phone_bill
+content-type: application/json
+
+
+

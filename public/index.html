@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</head>
+
+<body>
+    
+    <div x-data="{
+        username : '',
+        greeting : 'hello',
+        language : 'english',
+        sentence : '',
+        longestWord : '',
+        shortestWord: '',
+        wordCount : 0,
+        usage : '',
+        totalCost: 0,
+
+        calculateBill () {
+            axios
+               .get(`/api/phone_bill?usage=${this.usage}`)
+               .then ((result) =>  {
+                this.totalCost= result.data.totalCost;
+               });
+
+        },
+
+        checkSentence() {
+            
+            axios
+            .get(`/api/word_game?sentence=${this.sentence}`)
+            .then ((result) => {
+                //console.log(result.data);
+                this.longestWord = result.data.longestWord;
+                this.shortestWord = result.data.shortestWord;
+                this.wordCount = result.data.sum;
+            });
+
+
+        },
+        greet() {
+            // call the api and get a greeting back
+            axios
+                .get(`/api/greet?username=${this.username}&language=${this.language}`)
+                .then(result => {
+
+                    if (result.data.error) {
+                        this.greeting = result.data.error
+                    } else {
+                        this.greeting = result.data.message
+                    }
+
+                })
+        }
+    }">
+
+
+         <div class="greet">
+         <h2>Greet API widget</h2>
+         <div x-text="greeting">
+
+        </div>
+        <input type="text" x-model="username">
+        <input class="button" type="button" value="Greet" x-on:click="greet()">
+        <div>
+            <input type="radio" x-model="language" value="english" id="English">
+            <label for="english">English</label>
+            <input type="radio" x-model="language" value="xhosa" id="xhosa">
+            <label for="xhosa">Xhosa</label>
+            <input type="radio" x-model="language" value="zulu" id="zulu">
+            <label for="zulu"> Zulu </label>
+        </div>
+        </div>
+         
+        <div class="wordgame">
+            <h2>The Word Game Widget</h2>
+        <div>
+            <textarea x-model= "sentence" name="" id="" cols="30" rows="5" ></textarea>
+
+            <div>
+                <button x-on:click="checkSentence">Check sentence</button>
+            </div>
+        </div>
+
+        
+        <div>
+            Longest word: <span  x-text="longestWord"></span>
+        </div>
+
+        <div>
+            Shortest word: <span  x-text="shortestWord"></span>
+        </div>
+
+        <div>
+            Word count: <span x-text="wordCount"></span>
+        </div>
+        </div>
+
+
+        <div class="phonebill">
+            <h2>Total Phone Bill Widget</h2>
+            <div>
+            <input x-model="usage" type="text">
+            <button @click="calculateBill">Calculate </button>
+            </div>
+            <div x-text="totalCost"></div>
+        </div>
+
+
+
+    </div>   
+</body>
+
+</html>
