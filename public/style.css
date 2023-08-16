@@ -1,31 +1,30 @@
 body {
-    background-color: rgb(36, 110, 110);
+    background-color: #84828F;
   }
-
-  .greet {
-    background-color: rgb(108, 143, 143);
-    border: 1px solid;
-    margin-bottom: 1em;
-    padding: 1em;
-    width: 22em;
-    border-radius: 0.25em;
-    display: inline-block;
-    padding: 0.5em
   
-  }
 
   .wordgame {
-    background-color:rgb(108, 143, 143);
+    background-color: #3E4C5E;
     border: 1px solid;
     margin-bottom: 1em;
     padding: 1em;
     width: 35em;
     border-radius: 0.25em;
-    display: inline-block;
+    display: block;
     padding: 0.5em
     
   }
   
+  .enough {
+    border: 1px solid;
+    margin-bottom: 1em;
+    padding: 1em;
+    width: 35em;
+    border-radius: 0.25em;
+    display: block;
+    padding: 0.5em;
+    background-color: #3E4C5E;
+  }
    
   
 
@@ -34,15 +33,16 @@ body {
     border: 1px solid;
     margin-bottom: 1em;
     padding: 1em;
-    width: 22em;
+    width: 35em;
+    height: 13em;
     border-radius: 0.25em;
-    display: inline-block;
+    display: block;
     padding: 0.5em;
-    background-color: rgb(108, 143, 143);
+    background-color: #3E4C5E;
 }
 
 button {
-  background-color: grey;
+  background-color: #84828F;
   padding: 2px 4px;
   text-align: center;
   border-radius: 8px;

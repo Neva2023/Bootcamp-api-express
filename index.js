@@ -3,6 +3,7 @@ import longestWord from './bootcamp/longestWord.js';
 import shortestWord from './bootcamp/shortestWord.js';
 import wordLengths from './bootcamp/wordLengths.js';
 import totalPhoneBill from './bootcamp/totalPhoneBill.js';
+import enoughAirtime from './bootcamp/enoughAirtime.js';
 
 const app = express();
 app.use(express.json());
@@ -68,6 +69,7 @@ app.get('/api/word_game', function(req, res) {
 });
 
 
+
 app.get('/api/phone_bill', function(req, res) {
 
     const usage = req.query.usage;
@@ -80,6 +82,23 @@ app.get('/api/phone_bill', function(req, res) {
 
     res.json ({
         "totalCost" : totalPhoneBill(usage),
+        
+    });
+});
+
+app.get('/api/enoughAirtime', function(req, res) {
+
+    const usage1 = req.query.usage1;
+    const avaiAirtime = req.query.avaiAirtime;
+
+    if (!usage1 & !avaiAirtime) {
+        res.json ({
+            error : 'Please enter the usage and available airtime to calculate remaining airtime from'
+        })
+    }
+
+    res.json ({
+        "remainder" : enoughAirtime(usage1, avaiAirtime),
         
     });
 });

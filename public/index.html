@@ -28,6 +28,21 @@
         wordCount : 0,
         usage : '',
         totalCost: 0,
+        remainder : 0,
+        usage1 : '',
+        avaiAirtime: 0,
+
+
+        calculateRemainder () {
+
+            axios
+                .get(`/api/enoughAirtime?usage1=${this.usage1}&avaiAirtime=${this.avaiAirtime}`)
+                .then(result => {
+                        this.remainder = result.data.remainder
+
+                })
+
+        },
 
         calculateBill () {
             axios
@@ -67,24 +82,6 @@
         }
     }">
 
-
-         <div class="greet">
-         <h2>Greet API widget</h2>
-         <div x-text="greeting">
-
-        </div>
-        <input type="text" x-model="username">
-        <input class="button" type="button" value="Greet" x-on:click="greet()">
-        <div>
-            <input type="radio" x-model="language" value="english" id="English">
-            <label for="english">English</label>
-            <input type="radio" x-model="language" value="xhosa" id="xhosa">
-            <label for="xhosa">Xhosa</label>
-            <input type="radio" x-model="language" value="zulu" id="zulu">
-            <label for="zulu"> Zulu </label>
-        </div>
-        </div>
-         
         <div class="wordgame">
             <h2>The Word Game Widget</h2>
         <div>
@@ -117,6 +114,25 @@
             <button @click="calculateBill">Calculate </button>
             </div>
             <div x-text="totalCost"></div>
+        </div>
+
+        <div class="enough">
+            <h2>Enough Airtime</h2>
+            <div>Enter Available airtime</div>  
+            <div>
+            <input type="text" x-model="avaiAirtime">
+            </div>
+            <div>Projected usage</div>
+            <div>
+            <input type="text" x-model="usage1">
+            </div>
+            <div>Remaining airtime</div>
+            <div>
+            <div x-text="remainder"></div>
+            <button @click="calculateRemainder">Check airtime left</button>
+            </div>
+            </div>
+
         </div>
 
 
