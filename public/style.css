@@ -1,16 +1,16 @@
 body {
-    background-color: #84828F;
+    background-color: #636363;
   }
   
 
   .wordgame {
-    background-color: #3E4C5E;
+    background-color: #85C7F2;
     border: 1px solid;
     margin-bottom: 1em;
     padding: 1em;
     width: 35em;
     border-radius: 0.25em;
-    display: block;
+    display: inline-block;
     padding: 0.5em
     
   }
@@ -21,9 +21,10 @@ body {
     padding: 1em;
     width: 35em;
     border-radius: 0.25em;
-    display: block;
+    display: inline-block;
+    background-color: #DBDBDB;
     padding: 0.5em;
-    background-color: #3E4C5E;
+    background-color: #85C7F2;
   }
    
   
@@ -36,22 +37,15 @@ body {
     width: 35em;
     height: 13em;
     border-radius: 0.25em;
-    display: block;
+    display: inline-block;
     padding: 0.5em;
-    background-color: #3E4C5E;
+    background-color: #85C7F2;
 }
 
 button {
-  background-color: #84828F;
+  background-color: #DBDBDB;
   padding: 2px 4px;
   text-align: center;
   border-radius: 8px;
 }
 
-.button {
-  background-color: grey;
-  padding: 2px 4px;
-  text-align: center;
-  border-radius: 8px;
-}
-  
